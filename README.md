@@ -6,8 +6,8 @@ Same as how ChatGPT, Grok, Llama, etc., you ask a question (with some informatio
 
 # Disclaimer
 This is a small model with ~130M parameters. <br/>
-The quality of the response is not that good. <br/>
-Obviously with larger parameters and datasets, it response with better quality. <br/>
+The quality of the output is not that good. <br/>
+Obviously with larger parameters and datasets, it will respond with better quality. <br/>
 But since I've done this in my laptop, to make it managable, i decided to work with small model. <br/>
 (also tried to make 300M model, but it was reporting few months for only pretraining...)
 

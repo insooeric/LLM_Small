@@ -59,7 +59,7 @@ Below are the examples of output. <br/>
 
 # **Warning**
 In case you're testing full (like running all the way down) <br/>
-The size of this project is **290GB** <br/><br/>
+The size of this project is **290GB** (might be lower since that's with zip files)<br/><br/>
 <img src="./readme_materials/size.png" width="300"/> <br/>
 Also, depends on system specifications, but with my current system: <br/><br/>
 ASUS Zephyrus G15 (Laptop)

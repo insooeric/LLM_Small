@@ -12,7 +12,7 @@ But since I've done this in my laptop, to make it managable, i decided to work w
 (also tried to make 300M model, but it was reporting few months for only pretraining...)
 
 # Goal
-Since it is a small model, the goal of our AI is to to output **"at least understandable"** and **"somewhat answers the user's question"**
+Since it is a small model, the goal of our AI is to output **"at least understandable"** and **"somewhat answers the user's question"**
 
 # Installation
 Just download this project. <br/>
@@ -61,7 +61,7 @@ Below are the examples of output. <br/>
 In case you're testing full (like running all the way down) <br/>
 The size of this project is **290GB** (might be lower since that's with zip files)<br/><br/>
 <img src="./readme_materials/size.png" width="300"/> <br/>
-Also, depends on system specifications, but with my current system: <br/><br/>
+Additionally, run time depends on system specifications, but with my current system: <br/><br/>
 ASUS Zephyrus G15 (Laptop)
 - OS: Windows 11 Home 64-bit
 - CPU: AMD Ryzen 9 5900HS (16 CPUs), ~3.3GHz (also overclocked this to avg frequency 4.03GHz)

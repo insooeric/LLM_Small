@@ -57,6 +57,19 @@ Below are the examples of output. <br/>
 <img src="./readme_materials/ai_answer_1.png" width="800"/><br/>
 <img src="./readme_materials/ai_answer_2.png" width="800"/>
 
+# **Warning**
+In case you're testing full (like running all the way down) <br/>
+The size of this project is **290GB** <br/><br/>
+<img src="./readme_materials/size.png" width="300"/> <br/>
+Also, depends on system specifications, but with my current system: <br/><br/>
+ASUS Zephyrus G15 (Laptop)
+- OS: Windows 11 Home 64-bit
+- CPU: AMD Ryzen 9 5900HS (16 CPUs), ~3.3GHz (also overclocked this to avg frequency 4.03GHz)
+- GPU: NVIDIA GeForce RTX 3080 Laptop GPU 8GB VRAM
+- RAM: 40GB
+
+It took roughly a week.
+
 # Reference
 - https://link.springer.com/article/10.1007/s10462-024-10832-0
 - https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=chatgpt&oq=chat

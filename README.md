@@ -47,7 +47,7 @@ In this phase, we will use datasets from 11 libraries SFT training.
     - installation guide is covered in `8_Supervised_finetuning_Data_Schema/0_before_we_start.ipynb`
 - 1 from release (I made that)
 ## 6. Supervised Fine Tuning training
-W will run SFT training. <br/>
+We will run SFT training. <br/>
 Below is the final graph for finetuning. <br/><br/>
 <img src="./readme_materials/finetuning_graph.png" width="300"/>
 

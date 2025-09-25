@@ -1,0 +1,314 @@
+(LLM-dummy-documentation) PS C:\Users\insoo\Documents\Personal\Projects\LLM\LLM-dummy-documentation>
+(LLM-dummy-documentation) PS C:\Users\insoo\Documents\Personal\Projects\LLM\LLM-dummy-documentation> python python_files/train_sft.py `
+>>   --run-dir fine_tuning `
+>>   --base-ckpt pretrain_checkpoint/best_base.pt `
+>>   --config configs/model_config_124M_sft.json `
+>>   --train-ids-npy final_npy/train_input_ids.npy `
+>>   --train-mask-npy final_npy/train_loss_mask.npy `
+>>   --valid-ids-npy final_npy/valid_input_ids.npy `
+>>   --valid-mask-npy final_npy/valid_loss_mask.npy `
+>>   --lora --lora-r 32 --lora-alpha 64 --lora-drop 0.05 `
+>>   --lora-targets "attn.qkv,attn.out_proj,mlp.fc,mlp.proj" `
+>>   --micro-bsz 8 --accum 8 --workers 0 --prefetch 2 `
+>>   --amp bf16 `
+>>   --ema 0.9999 --ema-trainable-only --ema-every 4 `
+>>   --base-lr 2e-4 --min-lr-ratio 0.02 --warmup-pct 0.03 `
+>>   --label-smoothing 0.0 `
+>>   --quick-every 0 --eval-every 1000 --log-every 500 --periodic-every 1000 --clip-every 100 `
+>>   --total-updates 31000
+C:\Users\insoo\Documents\Personal\Projects\LLM\LLM-dummy-documentation\python_files\train_sft.py:65: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:28.)
+  q = torch.randn(1, 1, 1, 64, device="cuda", dtype=torch.float16)
+C:\Users\insoo\Documents\Personal\Projects\LLM\LLM-dummy-documentation\python_files\train_sft.py:68: UserWarning: Memory efficient kernel not used because: (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:776.)
+  F.scaled_dot_product_attention(q, k, v, is_causal=True, dropout_p=0.0)
+C:\Users\insoo\Documents\Personal\Projects\LLM\LLM-dummy-documentation\python_files\train_sft.py:68: UserWarning: Memory Efficient attention has been runtime disabled. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen/native/transformers/sdp_utils_cpp.h:551.)
+  F.scaled_dot_product_attention(q, k, v, is_causal=True, dropout_p=0.0)
+C:\Users\insoo\Documents\Personal\Projects\LLM\LLM-dummy-documentation\python_files\train_sft.py:68: UserWarning: Flash attention kernel not used because: (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:778.)
+  F.scaled_dot_product_attention(q, k, v, is_causal=True, dropout_p=0.0)
+C:\Users\insoo\Documents\Personal\Projects\LLM\LLM-dummy-documentation\python_files\train_sft.py:68: UserWarning: Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:598.)
+  F.scaled_dot_product_attention(q, k, v, is_causal=True, dropout_p=0.0)
+C:\Users\insoo\Documents\Personal\Projects\LLM\LLM-dummy-documentation\python_files\train_sft.py:68: UserWarning: CuDNN attention kernel not used because: (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:780.)
+  F.scaled_dot_product_attention(q, k, v, is_causal=True, dropout_p=0.0)
+C:\Users\insoo\Documents\Personal\Projects\LLM\LLM-dummy-documentation\python_files\train_sft.py:68: UserWarning: CuDNN attention has been runtime disabled. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:528.)
+  F.scaled_dot_product_attention(q, k, v, is_causal=True, dropout_p=0.0)
+C:\Users\insoo\Documents\Personal\Projects\LLM\LLM-dummy-documentation\python_files\train_sft.py:68: UserWarning: cudnn SDPA does not support sequence length 1. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:408.)
+  F.scaled_dot_product_attention(q, k, v, is_causal=True, dropout_p=0.0)
+[sdpa] enabled → flash=False mem=True cudnn=True | avail → flash=False mem=True cudnn=False
+Loaded config: {
+  "vocab_size": 60000,
+  "context_length": 512,
+  "emb_dim": 768,
+  "n_heads": 12,
+  "n_layers": 12,
+  "drop_rate": 0.1,
+  "qkv_bias": true,
+  "activation": "gelu",
+  "layer_norm_eps": 1e-05,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "attention_probs_dropout_prob": 0.0,
+  "grad_ckpt": false
+}
+[cuda] torch=2.6.0+cu124  dev=NVIDIA GeForce RTX 3080 Laptop GPU  cap=(8, 6)
+model device: cuda:0
+trainable params: 4,718,592 || all params: 136,247,808 || trainable%: 3.4632
+[resume] fine_tuning\checkpoints\latest.pt not found → starting fresh (will use --base-ckpt).
+[lr] BASE_LR=2.00e-04  warmup=930  min_lr_ratio=0.02
+no checkpoint found, starting fresh
+params: 136247808
+batch OK: torch.Size([8, 512]) torch.Size([8, 512])
+[resume] lr now = 2.15e-07 at upd 0
+[attn] SDPA (mem-efficient) via FP16 compute, model bf16
+[attn] SDPA (mem-efficient) via FP16 compute, model bf16
+[attn] SDPA (mem-efficient) via FP16 compute, model bf16
+[attn] SDPA (mem-efficient) via FP16 compute, model bf16
+[attn] SDPA (mem-efficient) via FP16 compute, model bf16
+[attn] SDPA (mem-efficient) via FP16 compute, model bf16
+[attn] SDPA (mem-efficient) via FP16 compute, model bf16
+[attn] SDPA (mem-efficient) via FP16 compute, model bf16
+[attn] SDPA (mem-efficient) via FP16 compute, model bf16
+[attn] SDPA (mem-efficient) via FP16 compute, model bf16
+[attn] SDPA (mem-efficient) via FP16 compute, model bf16
+[attn] SDPA (mem-efficient) via FP16 compute, model bf16
+[resume] baseline val_loss=6.8895  ppl=981.88  at upd 0
+🚀 Starting fresh training run.
+Plan → TOTAL_UPDATES=31000 (pilot=1550, 8×chunks). eff tokens/update ≈ 32,768.
+Training [pilot]:  64%|██████████████████████████████████████████████████████▊                              | 999/1550 [1:04:47<35:42,  3.89s/upd, dl=3ms, gnorm=2.11, gpu=7.76GB, loss=3.5088, lr=2.00e-04, scale=1, supd=3.90s, tps=8,425] 
+[upd 1000] val_loss=6.9684  ppl=1062.47
+💾 saved periodic checkpoint: u0001000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 6.9684 @ upd 1000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0001000.png
+Training [pilot]: 100%|████████████████████████████████████████████████████████████████████████████████████| 1550/1550 [1:41:39<00:00,  3.94s/upd, dl=0ms, gnorm=1.47, gpu=7.76GB, loss=3.2652, lr=2.00e-04, scale=1, supd=3.89s, tps=8,432]
+✅ Finished pilot. Reached update 1550.
+Training [chunk1]:  12%|██████████▏                                                                         | 449/3681 [29:09<3:29:27,  3.89s/upd, dl=0ms, gnorm=1.90, gpu=7.76GB, loss=3.1210, lr=1.99e-04, scale=1, supd=3.89s, tps=8,425]
+[upd 2000] val_loss=6.8808  ppl=973.36
+💾 saved periodic checkpoint: u0002000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 6.8808 @ upd 2000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0002000.png
+Training [chunk1]:  39%|███████████████████████████████▉                                                 | 1449/3681 [1:35:10<2:24:37,  3.89s/upd, dl=0ms, gnorm=1.13, gpu=7.76GB, loss=2.9651, lr=1.98e-04, scale=1, supd=3.89s, tps=8,426]
+[upd 3000] val_loss=6.7477  ppl=852.05
+💾 saved periodic checkpoint: u0003000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 6.7477 @ upd 3000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0003000.png
+Training [chunk1]:  67%|█████████████████████████████████████████████████████▉                           | 2449/3681 [2:41:11<1:19:51,  3.89s/upd, dl=0ms, gnorm=0.96, gpu=7.76GB, loss=2.9152, lr=1.95e-04, scale=1, supd=3.89s, tps=8,429]
+[upd 4000] val_loss=6.5660  ppl=710.56
+💾 saved periodic checkpoint: u0004000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 6.5660 @ upd 4000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0004000.png
+Training [chunk1]:  94%|█████████████████████████████████████████████████████████████████████████████▊     | 3449/3681 [3:47:13<15:02,  3.89s/upd, dl=0ms, gnorm=0.89, gpu=7.76GB, loss=2.8550, lr=1.91e-04, scale=1, supd=3.89s, tps=8,426]
+[upd 5000] val_loss=6.3300  ppl=561.18
+💾 saved periodic checkpoint: u0005000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 6.3300 @ upd 5000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0005000.png
+Training [chunk1]: 100%|███████████████████████████████████████████████████████████████████████████████████| 3681/3681 [4:03:24<00:00,  3.97s/upd, dl=0ms, gnorm=0.89, gpu=7.76GB, loss=2.8550, lr=1.91e-04, scale=1, supd=3.89s, tps=8,426]
+✅ Finished chunk1. Reached update 5231.
+Training [chunk2]:  21%|█████████████████▌                                                                  | 768/3681 [49:50<3:08:45,  3.89s/upd, dl=0ms, gnorm=0.88, gpu=7.76GB, loss=2.7694, lr=1.87e-04, scale=1, supd=3.90s, tps=8,425]
+[upd 6000] val_loss=6.0337  ppl=417.26
+💾 saved periodic checkpoint: u0006000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 6.0337 @ upd 6000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0006000.png
+Training [chunk2]:  48%|██████████████████████████████████████▉                                          | 1768/3681 [1:55:51<2:03:59,  3.89s/upd, dl=0ms, gnorm=0.99, gpu=7.76GB, loss=2.6823, lr=1.81e-04, scale=1, supd=3.89s, tps=8,426]
+[upd 7000] val_loss=5.6841  ppl=294.15
+💾 saved periodic checkpoint: u0007000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 5.6841 @ upd 7000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0007000.png
+Training [chunk2]:  75%|██████████████████████████████████████████████████████████████▍                    | 2768/3681 [3:01:52<59:08,  3.89s/upd, dl=0ms, gnorm=0.99, gpu=7.76GB, loss=2.6777, lr=1.74e-04, scale=1, supd=3.89s, tps=8,430]
+[upd 8000] val_loss=5.2960  ppl=199.54
+💾 saved periodic checkpoint: u0008000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 5.2960 @ upd 8000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0008000.png
+Training [chunk2]: 100%|███████████████████████████████████████████████████████████████████████████████████| 3681/3681 [4:02:11<00:00,  3.95s/upd, dl=0ms, gnorm=1.05, gpu=7.76GB, loss=2.6336, lr=1.71e-04, scale=1, supd=3.90s, tps=8,425]
+✅ Finished chunk2. Reached update 8912.
+Training [chunk3]:   2%|██                                                                                   | 87/3681 [05:42<3:52:57,  3.89s/upd, dl=0ms, gnorm=0.92, gpu=7.76GB, loss=2.7659, lr=1.67e-04, scale=1, supd=3.89s, tps=8,428]
+[upd 9000] val_loss=4.8980  ppl=134.02
+💾 saved periodic checkpoint: u0009000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 4.8980 @ upd 9000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0009000.png
+Training [chunk3]:  30%|███████████████████████▉                                                         | 1087/3681 [1:11:45<2:48:09,  3.89s/upd, dl=0ms, gnorm=0.97, gpu=7.76GB, loss=2.6092, lr=1.59e-04, scale=1, supd=3.90s, tps=8,421]
+[upd 10000] val_loss=4.5191  ppl=91.75
+💾 saved periodic checkpoint: u0010000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 4.5191 @ upd 10000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0010000.png
+Training [chunk3]:  57%|█████████████████████████████████████████████▉                                   | 2087/3681 [2:17:47<1:43:20,  3.89s/upd, dl=0ms, gnorm=1.14, gpu=7.76GB, loss=2.5993, lr=1.51e-04, scale=1, supd=3.89s, tps=8,427]
+[upd 11000] val_loss=4.1888  ppl=65.95
+💾 saved periodic checkpoint: u0011000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 4.1888 @ upd 11000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0011000.png
+Training [chunk3]:  84%|█████████████████████████████████████████████████████████████████████▌             | 3087/3681 [3:23:50<38:30,  3.89s/upd, dl=0ms, gnorm=0.94, gpu=7.76GB, loss=2.5935, lr=1.41e-04, scale=1, supd=3.89s, tps=8,428]
+[upd 12000] val_loss=3.9225  ppl=50.53
+💾 saved periodic checkpoint: u0012000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 3.9225 @ upd 12000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0012000.png
+Training [chunk3]: 100%|███████████████████████████████████████████████████████████████████████████████████| 3681/3681 [4:03:30<00:00,  3.97s/upd, dl=0ms, gnorm=0.94, gpu=7.76GB, loss=2.6245, lr=1.37e-04, scale=1, supd=3.90s, tps=8,420]
+✅ Finished chunk3. Reached update 12593.
+Training [chunk4]:  11%|█████████▎                                                                          | 406/3681 [26:22<3:32:13,  3.89s/upd, dl=0ms, gnorm=1.25, gpu=7.76GB, loss=2.6265, lr=1.32e-04, scale=1, supd=3.90s, tps=8,424]
+[upd 13000] val_loss=3.7142  ppl=41.03
+💾 saved periodic checkpoint: u0013000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 3.7142 @ upd 13000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0013000.png
+Training [chunk4]:  38%|██████████████████████████████▉                                                  | 1406/3681 [1:32:24<2:27:31,  3.89s/upd, dl=0ms, gnorm=0.85, gpu=7.76GB, loss=2.6216, lr=1.22e-04, scale=1, supd=3.90s, tps=8,424]
+[upd 14000] val_loss=3.5536  ppl=34.94
+💾 saved periodic checkpoint: u0014000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 3.5536 @ upd 14000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0014000.png
+Training [chunk4]:  65%|████████████████████████████████████████████████████▉                            | 2406/3681 [2:38:28<1:22:39,  3.89s/upd, dl=0ms, gnorm=0.90, gpu=7.76GB, loss=2.5901, lr=1.12e-04, scale=1, supd=3.90s, tps=8,420]
+[upd 15000] val_loss=3.4282  ppl=30.82
+💾 saved periodic checkpoint: u0015000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 3.4282 @ upd 15000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0015000.png
+Training [chunk4]:  93%|████████████████████████████████████████████████████████████████████████████▊      | 3406/3681 [3:44:32<17:50,  3.89s/upd, dl=0ms, gnorm=0.86, gpu=7.76GB, loss=2.5440, lr=1.02e-04, scale=1, supd=3.90s, tps=8,417]
+[upd 16000] val_loss=3.3279  ppl=27.88
+💾 saved periodic checkpoint: u0016000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 3.3279 @ upd 16000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0016000.png
+Training [chunk4]: 100%|███████████████████████████████████████████████████████████████████████████████████| 3681/3681 [4:03:31<00:00,  3.97s/upd, dl=0ms, gnorm=0.86, gpu=7.76GB, loss=2.5440, lr=1.02e-04, scale=1, supd=3.90s, tps=8,417]
+✅ Finished chunk4. Reached update 16274.
+Training [chunk5]:  20%|████████████████▌                                                                   | 725/3681 [47:04<3:11:34,  3.89s/upd, dl=0ms, gnorm=0.90, gpu=7.76GB, loss=2.5969, lr=9.14e-05, scale=1, supd=3.89s, tps=8,426]
+[upd 17000] val_loss=3.2462  ppl=25.69
+💾 saved periodic checkpoint: u0017000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 3.2462 @ upd 17000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0017000.png
+Training [chunk5]:  47%|█████████████████████████████████████▍                                          | 1725/3681 [1:53:13<2:06:50,  3.89s/upd, dl=10ms, gnorm=0.98, gpu=7.76GB, loss=2.5635, lr=8.13e-05, scale=1, supd=3.89s, tps=8,423]
+[upd 18000] val_loss=3.1782  ppl=24.00
+💾 saved periodic checkpoint: u0018000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 3.1782 @ upd 18000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0018000.png
+Training [chunk5]:  74%|███████████████████████████████████████████████████████████▉                     | 2725/3681 [2:59:16<1:02:00,  3.89s/upd, dl=0ms, gnorm=0.91, gpu=7.76GB, loss=2.5516, lr=7.14e-05, scale=1, supd=3.90s, tps=8,416]
+[upd 19000] val_loss=3.1209  ppl=22.67
+💾 saved periodic checkpoint: u0019000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 3.1209 @ upd 19000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0019000.png
+Training [chunk5]: 100%|███████████████████████████████████████████████████████████████████████████████████| 3681/3681 [4:02:26<00:00,  3.95s/upd, dl=0ms, gnorm=0.88, gpu=7.76GB, loss=2.5649, lr=6.66e-05, scale=1, supd=3.90s, tps=8,422]
+✅ Finished chunk5. Reached update 19955.
+Training [chunk6]:   1%|█                                                                                   | 44/3681 [02:55<3:55:52,  3.89s/upd, dl=10ms, gnorm=1.04, gpu=7.76GB, loss=2.4822, lr=6.19e-05, scale=1, supd=3.90s, tps=8,418]
+[upd 20000] val_loss=3.0729  ppl=21.60
+💾 saved periodic checkpoint: u0020000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 3.0729 @ upd 20000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0020000.png
+Training [chunk6]:  28%|██████████████████████▉                                                          | 1044/3681 [1:08:59<2:51:04,  3.89s/upd, dl=0ms, gnorm=1.02, gpu=7.76GB, loss=2.5790, lr=5.28e-05, scale=1, supd=3.90s, tps=8,420]
+[upd 21000] val_loss=3.0326  ppl=20.75
+💾 saved periodic checkpoint: u0021000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 3.0326 @ upd 21000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0021000.png
+Training [chunk6]:  56%|████████████████████████████████████████████▉                                    | 2044/3681 [2:15:04<1:46:10,  3.89s/upd, dl=0ms, gnorm=0.94, gpu=7.76GB, loss=2.5785, lr=4.42e-05, scale=1, supd=3.90s, tps=8,417]
+[upd 22000] val_loss=2.9984  ppl=20.05
+💾 saved periodic checkpoint: u0022000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 2.9984 @ upd 22000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0022000.png
+Training [chunk6]:  83%|████████████████████████████████████████████████████████████████████▋              | 3044/3681 [3:21:08<41:19,  3.89s/upd, dl=0ms, gnorm=0.99, gpu=7.76GB, loss=2.4618, lr=3.63e-05, scale=1, supd=3.90s, tps=8,418]
+[upd 23000] val_loss=2.9691  ppl=19.47
+💾 saved periodic checkpoint: u0023000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 2.9691 @ upd 23000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0023000.png
+Training [chunk6]: 100%|███████████████████████████████████████████████████████████████████████████████████| 3681/3681 [4:03:37<00:00,  3.97s/upd, dl=0ms, gnorm=0.91, gpu=7.76GB, loss=2.5365, lr=3.26e-05, scale=1, supd=3.91s, tps=8,416]
+✅ Finished chunk6. Reached update 23636.
+Training [chunk7]:  10%|████████▎                                                                           | 363/3681 [23:36<3:35:16,  3.89s/upd, dl=0ms, gnorm=0.92, gpu=7.76GB, loss=2.5501, lr=2.91e-05, scale=1, supd=3.89s, tps=8,427]
+[upd 24000] val_loss=2.9441  ppl=18.99
+💾 saved periodic checkpoint: u0024000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 2.9441 @ upd 24000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0024000.png
+Training [chunk7]:  37%|█████████████████████████████▉                                                   | 1363/3681 [1:29:41<2:30:17,  3.89s/upd, dl=0ms, gnorm=1.12, gpu=7.76GB, loss=2.4383, lr=2.26e-05, scale=1, supd=3.90s, tps=8,421]
+[upd 25000] val_loss=2.9226  ppl=18.59
+💾 saved periodic checkpoint: u0025000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 2.9226 @ upd 25000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0025000.png
+Training [chunk7]:  64%|███████████████████████████████████████████████████▉                             | 2363/3681 [2:35:45<1:25:26,  3.89s/upd, dl=0ms, gnorm=0.86, gpu=7.76GB, loss=2.4774, lr=1.71e-05, scale=1, supd=3.89s, tps=8,432]
+[upd 26000] val_loss=2.9043  ppl=18.25
+💾 saved periodic checkpoint: u0026000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 2.9043 @ upd 26000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0026000.png
+Training [chunk7]:  91%|███████████████████████████████████████████████████████████████████████████▊       | 3363/3681 [3:41:46<20:36,  3.89s/upd, dl=0ms, gnorm=0.95, gpu=7.76GB, loss=2.5034, lr=1.24e-05, scale=1, supd=3.90s, tps=8,426]
+[upd 27000] val_loss=2.8886  ppl=17.97
+💾 saved periodic checkpoint: u0027000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 2.8886 @ upd 27000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0027000.png
+Training [chunk7]: 100%|███████████████████████████████████████████████████████████████████████████████████| 3681/3681 [4:03:31<00:00,  3.97s/upd, dl=0ms, gnorm=0.95, gpu=7.76GB, loss=2.5034, lr=1.24e-05, scale=1, supd=3.90s, tps=8,426]
+✅ Finished chunk7. Reached update 27317.
+Training [chunk8]:  19%|███████████████▌                                                                    | 682/3681 [44:15<3:14:20,  3.89s/upd, dl=0ms, gnorm=1.02, gpu=7.76GB, loss=2.4807, lr=8.77e-06, scale=1, supd=3.89s, tps=8,428]
+[upd 28000] val_loss=2.8751  ppl=17.73
+💾 saved periodic checkpoint: u0028000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 2.8751 @ upd 28000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0028000.png
+Training [chunk8]:  46%|█████████████████████████████████████                                            | 1682/3681 [1:50:16<2:09:36,  3.89s/upd, dl=0ms, gnorm=0.91, gpu=7.76GB, loss=2.4855, lr=6.13e-06, scale=1, supd=3.89s, tps=8,426]
+[upd 29000] val_loss=2.8638  ppl=17.53
+💾 saved periodic checkpoint: u0029000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 2.8638 @ upd 29000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0029000.png
+Training [chunk8]:  73%|███████████████████████████████████████████████████████████                      | 2682/3681 [2:56:17<1:04:45,  3.89s/upd, dl=0ms, gnorm=1.01, gpu=7.76GB, loss=2.4922, lr=4.53e-06, scale=1, supd=3.89s, tps=8,432]
+[upd 30000] val_loss=2.8542  ppl=17.36
+💾 saved periodic checkpoint: u0030000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 2.8542 @ upd 30000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0030000.png
+Training [chunk8]: 100%|███████████████████████████████████████████████████████████████████████████████████| 3681/3681 [4:02:11<00:00,  3.95s/upd, dl=0ms, gnorm=0.92, gpu=7.76GB, loss=2.4900, lr=4.13e-06, scale=1, supd=3.89s, tps=8,431]
+✅ Finished chunk8. Reached update 30998.
+Training [tail]:  50%|██████████████████████████████████████████████▌                                              | 1/2 [00:07<00:03,  3.88s/upd, dl=0ms, gnorm=0.95, gpu=7.76GB, loss=2.3102, lr=4.00e-06, scale=1, supd=3.89s, tps=8,443]
+[upd 31000] val_loss=2.8459  ppl=17.22
+💾 saved periodic checkpoint: u0031000
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_best
+💾 saved LoRA (EMA) adapter → fine_tuning\checkpoints\lora_best_ema
+⭐ new best: 2.8459 @ upd 31000
+🖼️ saved plot → fine_tuning\plots\loss_curve_u0031000.png
+Training [tail]: 100%|█████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [01:20<00:00, 40.12s/upd, dl=0ms, gnorm=0.95, gpu=7.76GB, loss=2.3102, lr=4.00e-06, scale=1, supd=3.89s, tps=8,443]
+✅ Finished tail. Reached update 31000.
+🏁 Full run plan completed (within this step budget).
+💾 saved LoRA adapter → fine_tuning\checkpoints\lora_final
+(LLM-dummy-documentation) PS C:\Users\insoo\Documents\Personal\Projects\LLM\LLM-dummy-documentation> 

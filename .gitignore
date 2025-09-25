@@ -1,0 +1,13 @@
+.venv/
+.vscode/
+books/
+books_small/
+final_npy/
+fine_tuning/
+fine_tuning_small/
+materials/
+pretrain_checkpoint/
+pretrain_checkpoint_notebook/
+memo.txt
+*.zip
+8_Supervised_finetuning_Data_Schema/*/

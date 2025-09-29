@@ -11,3 +11,5 @@ pretrain_checkpoint_notebook/
 memo.txt
 *.zip
 8_Supervised_finetuning_Data_Schema/*/
+_export_for_application
+10_SFT_LORA_training/test_for_application.ipynb

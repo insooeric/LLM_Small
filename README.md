@@ -18,6 +18,11 @@ Since it is a small model, the goal of our AI is to output **"at least understan
 Just download this project. <br/>
 The project itself contains installation guide.
 
+# Update
+If you only want to test out the model, download [for_llm_app](https://github.com/insooeric/LLM_Small_sampling_files) project. <br/>
+It contains folder `for_llm_app`. Take that folder then put it in `11_Sampling` directory.
+However, you will still have to install necessary libraries.
+
 # Brief Contents
 ## 1. Making tokenizer
 After this phase, it will create following files: <br/><br/>

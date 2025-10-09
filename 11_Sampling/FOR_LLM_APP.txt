@@ -1,0 +1,2 @@
+Put that for_llm_app folder in this directory.
+You can download it from "https://github.com/insooeric/LLM_Small_sampling_files"

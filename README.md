@@ -87,4 +87,5 @@ It took roughly a week.
 - https://github.com/rasbt/LLMs-from-scratch
 - https://www.kaggle.com/datasets/lokeshparab/gutenberg-books-and-metadata-2025
 - https://huggingface.co/
+- https://www.youtube.com/watch?v=yAcWnfsZhzo&list=PLTKMiZHVd_2IIEsoJrWACkIxLRdfMlw11
 - bunch of videos related to LLM architecture from YouTube...

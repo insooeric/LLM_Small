@@ -52,7 +52,12 @@ In this phase, we will use datasets from 11 libraries SFT training.
     - installation guide is covered in `8_Supervised_finetuning_Data_Schema/0_before_we_start.ipynb`
 - 1 from release (I made that)
 ## 6. Supervised Fine Tuning training
-We will run SFT training. <br/>
+In this step, we will create:
+- `Dummy_Model_sft.py`
+- `datasets_sft.py`
+- `train_sft.py`
+by modifying original 3 python files <br/>
+then run SFT training. <br/>
 Below is the final graph for finetuning. <br/><br/>
 <img src="./readme_materials/finetuning_graph.png" width="300"/>
 

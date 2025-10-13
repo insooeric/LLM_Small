@@ -13,4 +13,4 @@ memo.txt
 8_Supervised_finetuning_Data_Schema/*/
 _export_for_application
 10_SFT_LORA_training/test_for_application.ipynb
-11_Sampling/for_llm_app
+11_Sampling/for_llm_app/
